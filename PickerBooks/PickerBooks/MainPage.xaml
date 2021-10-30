@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PickerBooks.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Select Books!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Picker x:Name="pikBook"
+                Title="Chọn một cuốn sách"
+                ItemsSource="{Binding titleBook}"
+                ItemDisplayBinding="{Binding titleBook}"
+                SelectedIndexChanged="pikBook_SelectedIndexChanged"/>
+        <ListView x:Name="listViewBook" IsPullToRefreshEnabled="True" RowHeight="250">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding imageBook}" Aspect="AspectFill" Grid.Row="0" Grid.Column="0"/>
+                            <Label Text="{Binding titleBook}" FontSize="32" TextColor="Blue" Grid.Row="0" Grid.Column="1" 
+                                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
